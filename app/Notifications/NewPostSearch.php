@@ -42,5 +42,16 @@ class NewPostSearch extends Notification implements ShouldQueue
         $this->count = $count;
     }
 
-    // your code to make it happen
+    public function via()
+    {
+        return ['database'];
+    }
+
+    public function toArray()
+    {
+        return [
+            'subject' => $this->subject,
+            'ids' => $this->posts,
+        ];
+    }
 }

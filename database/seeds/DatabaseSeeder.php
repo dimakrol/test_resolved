@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
+         $users = factory(App\User::class, 3)->create();
+         for($i = 0; $i < 50; $i++) {
+             factory(App\Post::class)->create(['user_id' => $users->random()->id]);
+         }
     }
 }
